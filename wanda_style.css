@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* CSS Document */
+/*CSS重置*/
+*{margin:0; padding:0;}
+ul, li{list-style-type:none;}
+a{text-decoration:none;}
+a:hover{ text-decoration:underline;}
+img {border:none;}
+
+.f_l{float:left;}
+.f_r{float:right;}
+
+body{background:#f1f7f7; font-family:"微软雅黑"; padding-bottom:50px;}
+
+#header{}
+#header .address{width:980px; padding:0 10px; margin:0 auto; height:34px; line-height:34px;}
+#header .address a{color:#909db6;}
+#header .address a.change{font-size:12px; margin-left:12px;}
+#header .f_l{font-size:16px;}
+#header .f_r{font-size:12px;}
+#header .f_r a{padding:0 10px;}
+#header .f_r span{padding:0 10px; color:#909db6;}
+
+#header .wrap_logo{background:#deeff7; height:90px; clear:both;}
+#header .logo{margin:0 auto; width:1000px; overflow:hidden;}
+#header .logo h1{width:370px; height:90px; background:url(wanda/logo.png) 0 16px no-repeat; }
+#header .logo h1 a{display:inline-block;width:370px; height:90px;text-indent:-10000px;}
+
+#header .wrap_menu{height:46px; background:#5fb8e3;}
+#header .menu{width:1000px;margin:0 auto;}
+#header .menu li{width:160px; float:left; text-align:center; font-size:20px; line-height:46px;}
+/*#header .menu li:hover{background:#41a0cc;}*/
+#header .menu a{color:#fff; display:block;}
+#header .menu a:hover{background:#41a0cc; text-decoration:none;}
+
+#main{width:1000px;margin:10px auto 0; overflow:hidden;}
+#main .left{width:750px;}
+#main .left .ad{width:750px; height:80px; overflow:hidden; margin-bottom:20px;}
+#main .left .film{}
+#main .film .button{height:35px;}
+#main .film .button a{display:inline-block; text-align:center; width:148px; line-height:33px; font-size:16px; font-weight:bold; background:#deeff7; border:1px solid #bdddf4; border-bottom:none; margin-right:3px; color:#197fa5;}
+#main .button a.current{background:#fff;}
+
+#main .show_film{width:732px; padding:10px 3px 40px 12px; border:1px solid #bdddf4; background:#fff;}
+#main .show_film:after{content:"";display:block; clear:both;}
+#main .show_film ul{width:174px; float:left; padding-right:9px; margin-top:30px;}
+#main .show_film h2{font-size:14px; line-height:18px;}
+
+#main .right{width:238px;}
+#main .right .top{ margin-bottom:15px;}
+#main .right .top a{display:inline-block; width:77px; height:82px;}
+
+#main .service h2{ width:118px; height:34px; border:1px solid #bdddf4; line-height:34px; border-bottom:none; font-size:16px; color:#197fa5; text-indent:28px; background:#fff;}
+#main .service .bg{width:118px; height:34px; border-bottom:1px solid #bdddf4; background:url(wanda/gonggao_bg.gif) no-repeat;}
+
+#main .service .info{height:89px; padding:27px; overflow:hidden; font-size:12px;line-height:30px; background:#fff; border:1px solid #bdddf4; border-top:none; clear:both;}
+#main .info p a{color:#909090;}
+
+#wrap_member{margin-top:20px; background:#fff; height:174px;}
+#member{width:1021px; margin:0 auto; padding:10px 0;}
+#member .col1{width:110px;}
+#member .col2{width:406px;}
+#member .col3{width:505px;}
+#member a{display:inline-block; text-indent:-10000px;}
+
+#member .w1{width:100px; height:70px;}
+#member .w2{width:186px; height:40px;}
+#member .w3{width:197px; height:40px;}
+#member .w4{width:125px; height:50px;}
+#member .w5{width:245px; height:40px;}
+#member .w6{width:245px; height:100px;}
+#member .w7{width:250px; height:150px;}
+
+#member .col1 .a1{background:url(img/1.gif) no-repeat;}
+#member .col1 .a2{background:url(img/9.gif) no-repeat;}
+
+#member .a3{background:url(img/2.gif) no-repeat;}
+#member .a5{background:url(img/6.gif) no-repeat;}
+
+#member .a4{background:url(img/3.gif) no-repeat;}
+#member .a6{background:url(img/7.gif) no-repeat;}
+
+#member .a7{background:url(img/10.gif) no-repeat;}
+#member .a8{background:url(img/11.gif) no-repeat;}
+#member .a9{background:url(img/12.gif) no-repeat;}
+
+#member .a10{background:url(img/4.gif) no-repeat;}
+#member .a11{background:url(img/8.gif) no-repeat;}
+#member .a12{background:url(img/5.gif) no-repeat;}
+
+.space{margin-top:10px;}
+.space2{margin-right:10px;}
+
+#footer{}
+#footer .wrap_call{height:38px; background:#5fbae4;}
+#footer .wrap_call .call{width:1000px; margin:0 auto; line-height:38px; font-size:12px; color:#fff;}
+#footer .call a{color:#fff; padding:0 12px;}
+
+#footer .wrap_copyright{height:40px; background:#fff; }
+#footer .copyright{width:1000px; margin:0 auto;text-align:center; font-size:12px; line-height:40px; color:#909090;}
+#footer .copyright img{ vertical-align:middle;}
+
+#footer .end{height:31px; padding-top:9px; text-align:center;}
