@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0;}
+body{background:#CCC;}
+#calendar{ border-collapse:collapse; background:#fff; margin:50px auto;}
+thead th{border-bottom:1px solid #000;}
+th, td{ font-weight:normal; width:60px; height:40px; line-height:40px; text-align:center;}
+.curDay{ background:#06F; color:#FFF; font-weight:bold;}
+</style>
+
+<script>
+window.onload = function(){
+	var oTable = document.getElementById('calendar');
+	var oTbody = oTable.tBodies[0];
+	
+	// 使用二维数组保存天
+	var cal = [];
+	
+	/*	
+	[
+		['','',1,2,3,4,5],
+		[6,7,8,9,10,11,12],	
+		[13,14,15,16,17,18,19],
+		[20,21,22,23,24,25,26],	
+		[27,28,29,30,31]	
+	]
+	*/
+	
+	var date = new Date();
+	var today = date.getDate();
+	
+	init();
+	
+	for(var i=0;i<cal.length;i++){
+		var oTr = document.createElement('tr');
+		for(var j=0; j<cal[i].length; j++){
+			var oTd = document.createElement('td');
+			// 判断如果是今天，就高亮显示 
+			if(cal[i][j] == today){
+				oTd.className = 'curDay';
+			}
+			oTd.innerHTML = cal[i][j];
+			oTr.appendChild(oTd);
+			//document.write(cal[i][j] + "&nbsp;&nbsp;");	
+		}
+		oTbody.appendChild(oTr);
+		//document.write("<br />");
+	}
+
+	
+	// 给二维数组初始化
+	function init(){
+		var day = 1; 
+		var w = getDayOfWeek(date); // 一号是周几
+		var m = getDaysOfMonth(date); //最大天数
+		
+		for(var i=0; i<6 && day<=m; i++){
+			var arr = new Array();			
+			// 一行有七天
+			for(var j=0; j<7 && day<=m; j++){
+				if(j<w && i==0){
+					arr.push('');	
+				}else{
+					arr.push(day++);	
+				}
+			}
+			
+			cal.push(arr);
+		}
+	}
+	
+	
+	// 第一天周几？	
+	function getDayOfWeek(date){
+		date.setDate(1);	
+		return	date.getDay();
+	}	
+	//alert( getDayOfWeek(new Date()) );
+	
+	// 一个月多少天？
+	function getDaysOfMonth(date){	
+		var month = date.getMonth();		
+		date.setMonth(month+1);		
+		date.setDate(0);		
+		return date.getDate();
+	}	
+	//alert( getDaysOfMonth(new Date()) );
+};
+</script>
+</head>
+
+<body>
+<table id="calendar">
+  <thead>
+    <tr>
+      <th>日</th>
+      <th>一</th>
+      <th>二</th>
+      <th>三</th>
+      <th>四</th>
+      <th>五</th>
+      <th>六</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</body>
+</html>

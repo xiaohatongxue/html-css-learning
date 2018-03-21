@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+window.onload = function(){
+	
+	var oProv = document.getElementsByTagName('select')[0];
+	var oCity = document.getElementsByTagName('select')[1];
+	
+	var arr_pro = ['黑龙江','吉林','辽宁'];
+	var arr_city = [
+		['哈尔滨','大庆','齐齐哈尔'],
+		['长春','吉林','四平'],
+		['大连','铁岭','沈阳']
+	];
+	
+	for(var i=0;i<arr_pro.length;i++){
+		var option = document.createElement('option');
+		option.innerHTML = arr_pro[i];
+		option.value = arr_pro[i];
+		oProv.appendChild(option);	
+	}
+	
+	var index = 0; // 默认是黑龙江省被选中
+	
+	// 将默认的省份对应的城市列表显示出来
+	for(var i=0; i<arr_city[index].length; i++){
+		var opt = document.createElement('option');
+		opt.innerHTML = arr_city[index][i];
+		opt.value = arr_city[index][i];
+		oCity.appendChild(opt);
+	}
+	
+	oProv.onchange = function(){
+		oCity.innerHTML = '';
+		
+		var index = getIndex(arr_pro, oProv.value);
+		for(var i=0; i<arr_city[index].length; i++){
+			var oC = document.createElement('option');
+			
+			oC.innerHTML = arr_city[index][i];
+			
+			oC.value = arr_city[index][i];
+			
+			oCity.appendChild(oC);	
+		}
+	};
+	
+	
+	function getIndex(arr, value){
+		var index = 0;
+		for(var i=0; i<arr.length; i++){
+			if(arr[i] == value){
+				index = i;
+				break;
+			}
+		}
+		return index;	
+	}
+	
+};
+</script>
+</head>
+
+<body>
+<div>
+<span>省份：<select></select></span><span>城市：<select></select></span>
+</div>
+</body>
+</html>

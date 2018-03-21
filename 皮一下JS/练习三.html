@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+select{width:100px; height:24px; border:1px solid #666;}
+span{ margin-right:20px;}
+</style>
+<script>
+window.onload = function(){
+	var oProv = document.getElementsByTagName('select')[0];
+	var oCity = document.getElementsByTagName('select')[1];
+	
+	// JSON 对象存储了4个省份和对应的城市
+	var address = {
+		'黑龙江':['哈尔滨','佳木斯','大庆'],
+		'辽宁':['沈阳','大连','鞍山'],
+		'四川':['成都','绵阳','九寨沟'],
+		'河北':['石家庄','北戴河','邯郸']
+	};
+	
+	//alert(address['黑龙江']);
+	
+	// for in
+	for(var pro in address){
+		var oP = document.createElement('option');
+		oP.innerHTML = pro;  //<option>黑龙江</option>
+		oP.value = pro;		 //<option value="黑龙江">黑龙江</option>
+		oProv.appendChild(oP); //<select><option value="黑龙江">黑龙江</option></select>
+		
+		changeCity();
+	}
+	
+	function changeCity(){
+		oCity.innerHTML = ''; // 将原有option标签中的内容清空
+		
+		for(var i=0;i<address[oProv.value].length; i++){
+			var oC = document.createElement('option');
+			oC.innerHTML = address[oProv.value][i];
+			oC.value = address[oProv.value][i];
+			
+			oCity.appendChild(oC);
+		}
+	}
+	
+	oProv.onchange = function(){
+		changeCity();
+	};
+};
+</script>
+</head>
+
+<body>
+<div>
+<span>省份：<select></select></span><span>城市：<select></select></span>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<style>
+*{margin:0; padding:0;}
+#clock{position:relative;border:1px solid #000; width:976px; height:172px;/*overflow:hidden;*/ margin:100px auto;}
+#clock div{ width:122px;position:absolute; top:0;}
+
+#second_2{ left: 122px;}
+</style>
+
+<script src="tools.js"></script>
+<script>
+window.onload = function(){
+	var oSecond_2 = document.getElementById('second_2');
+	var oP = document.getElementsByTagName('p')[0];
+	
+	init();
+	
+	// 每调用一次init方法，重新向 <div id="second_2">标签中添加<img /> 标签，排列顺序由当前秒的个位数字决定
+	function init(){
+		oSecond_2.innerHTML = '';
+		
+		var date = new Date();
+		var second = date.getSeconds();		  //57	
+		var imgUrl = second % 10; // 获取秒的个位数字，也就是图片的名称部分
+
+		oP.innerHTML = second + '秒';
+		
+		// 秒的个位数字有10种数字：0~9，因此循环10次，添加10张图片
+		for(var i=0; i<10; i++){			
+			// 第一张图是动态变化的：例如，35秒时，35 % 10 = 5 ——>  5.jpg
+			oSecond_2.innerHTML += '<img src="images/'+ (imgUrl % 10) +'.jpg" />';			
+			imgUrl++;	// 6  ——> 6.jpg
+		}		
+	}
+	
+	// 
+	var timer = setInterval(function(){	
+		
+		// 将DIV向上移动一张图片高度：172px
+		move(oSecond_2, 20, -172, 'top', function(){
+			// 在回调函数中，调用init方法，将div中的图片，重新排列一次
+			init();
+			// 将div 的 top 值拉回到0
+			oSecond_2.style.top = '0px';
+			
+		});
+		
+	}, 1000);
+};
+</script>
+</head>
+
+<body>
+<p style="font-size:36px; text-indent:6em;">显示时间：</p>
+<div id="clock">	
+    <div id="second_2"></div>
+</div>
+</body>
+</html>

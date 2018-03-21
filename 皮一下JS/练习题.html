@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+table{width:400px; border-collapse:collapse; border:3px solid #000;}
+td,th{text-align:center;border:1px solid #000; height:24px;}
+</style>
+<script>
+window.onload = function(){
+	var oTable = document.getElementsByTagName('table')[0];
+	
+	var aA = oTable.getElementsByTagName('a');
+	
+	for(var i=0; i<aA.length; i++){
+		aA[i].onclick = function(){
+			this.parentNode.parentNode.style.display = 'none';	
+		};	
+	}
+};
+</script>
+</head>
+
+<body>
+<table>
+  <thead>
+    <tr>
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>张三</td>
+      <td>22</td>
+      <td><a href="javascript:;">删除</a></td>
+    </tr>
+    <tr>
+      <td>李四</td>
+      <td>25</td>
+      <td><a href="javascript:;">删除</a></td>
+    </tr>
+    <tr>
+      <td>陈虹</td>
+      <td>20</td>
+      <td><a href="javascript:;">删除</a></td>
+    </tr>
+    <tr>
+      <td>吴风</td>
+      <td>23</td>
+      <td><a href="javascript:;">删除</a></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

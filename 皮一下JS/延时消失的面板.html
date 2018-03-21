@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0; padding:0}
+body{font-family:"宋体";}
+
+#box{ width:248px; height:112px; margin:50px auto; border:1px solid #CCC; padding:10px 0 0 110px; position:relative;}
+.star img {margin-right:5px;}
+.panel{ width:167px; height:51px; padding:12px 27px 10px 16px; background:url(images/bg-1.gif); line-height:17px; font-size:12px; position:absolute; top:29px; display:none;}
+
+.score{color:#ff4400; font-weight:bold;}
+
+.p1{left:15px;}
+.p2{left:39px;}
+.p3{left:63px;}
+.p4{left:87px;}
+.p5{left:111px;}
+</style>
+
+<script>
+window.onload = function(){
+	var oBox = document.getElementById('box');	
+	var aImg = oBox.getElementsByTagName('p')[0].getElementsByTagName('img');
+	var aPanel = oBox.getElementsByTagName('div');
+
+	var timer = null; // 保存定时器对象
+
+	for(var i=0; i< aImg.length; i++){
+		
+		aImg[i].index = i;  // 自定义属性：给每张图片添加一个索引，用来与5个评分面板对应
+		
+		aImg[i].onmouseover = function(){			
+			// 将所有星初始化为图片1，信息面板初始化隐藏
+			for(var i=0; i< aImg.length; i++){
+				aImg[i].src = 'images/T19-19-1.png';
+				aPanel[i].style.display = 'none';
+			}
+			
+			// 根据第几颗星，更换不同色彩的星
+			for(var i=0; i<=this.index; i++){
+				if(this.index < 2){
+					aImg[i].src = 'images/T19-19-2.png';	
+				}else{
+					aImg[i].src = 'images/T19-19-3.png';	
+				}
+			}	
+			
+			// 显示每颗星对应的面板
+			aPanel[this.index].style.display = 'block';		
+			
+			onOff = false;	// 鼠标移入图片，将是否单击了图片改为 —— 没单击
+			
+			num = this.index;
+		};
+		
+		// 鼠标移出事件处理函数
+		aImg[i].onmouseout = function(){
+			clearTimeout(timer);
+			
+			timer = setTimeout(hide,1000);
+		};
+		
+		var onOff = false; // 是否单击了图片，默认没单击
+		
+		aImg[i].onclick = function(){
+			onOff = true;
+		}
+	}
+	
+	var num = 0;
+	
+	function hide(){		
+		// 如果没单击过图片，鼠标移出图片区域，自动还原初始化状态	
+		if(!onOff){
+			for(var i=0; i< aImg.length; i++){
+				aPanel[i].style.display = 'none';
+				aImg[i].src = 'images/T19-19-1.png';
+			}
+		}else{ //否则，只将信息面板隐藏
+			aPanel[num].style.display = 'none';
+		}
+	};
+};
+</script>
+</head>
+
+<body>
+<div id="box">
+	<p class="star"><img src="images/T19-19-1.png" /><img src="images/T19-19-1.png" /><img src="images/T19-19-1.png" /><img src="images/T19-19-1.png" /><img src="images/T19-19-1.png" />
+    </p>
+    
+
+    <div class="panel p1">
+        <p class="score">1分 很不满意</p>
+        <p>差得太离谱，与卖家描述的严重不符，非常不满</p>
+    </div>
+    
+    <div class="panel p2">
+        <p class="score">2分 不满意</p>
+        <p>部分有破损，与卖家描述的不符，不满意</p>
+    </div>
+    
+    <div class="panel p3">
+        <p class="score">3分 一般</p>
+        <p>质量一般，没有卖家描述的那么好</p>
+    </div>
+    
+    <div class="panel p4">
+        <p class="score">4分 满意</p>
+        <p>质量不错，与卖家描述的基本一致，还是挺满意的</p>
+    </div>
+
+    <div class="panel p5">
+        <p class="score">5分 很不满意</p>
+        <p>质量非常好，与卖家描述的完全一致，非常满意</p>
+    </div>
+
+</div>
+</body>
+</html>
